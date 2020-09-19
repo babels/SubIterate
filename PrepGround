@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PrepGround : MonoBehaviour
+{
+  public GameObject ground1;
+
+  void Start() {
+
+     //var shfw = world.OrderBy(a => Guid.NewGuid()).ToList();
+
+     /*      int children = g1.childCount;
+      if( children < 1) {
+         Debug.Log("[!]  No Objects in Scene");
+         return;
+      } */
+
+      int i = 0;
+
+      /* iterate over each object in list */
+      while( true ) {
+         GameObject map  =  ground1.transform.GetChild( i ).gameObject;      // sub object pointer
+         string nme      =  map.name;                                        // sub object name
+         string tag      =  map.tag;                                         // sub object tag
+
+
+         /* cheack is object name contains a the keyword Plane */
+         if( nme.Contains("Plane") ) {
+
+           // if( tag.Contains("unique") ) { Debug.Log("we have unique"); }
+
+            Debug.Log("Im on a plane");
+
+            if( i % 2 == 0 ) {                                                // if the count (i) is even > (% == modulus not divide)
+               Destroy( map );                                               // destroy object
+               Debug.Log(nme + "Has been destroyed");
+            }
+
+         } else {
+            Debug.Log("Object is not a plane");
+
+         }
+
+         Debug.Log(nme);
+         i++;
+     }
+  }
+
+
+}
